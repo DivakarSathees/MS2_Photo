@@ -1,0 +1,30 @@
+<p>hai</p>
+
+
+@model IEnumerable<dotnetapp.Models.Workshop>
+
+<h2>Available Workshops</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Remaining Capacity</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var workshop in Model)
+        {
+            <tr>
+                <td>@workshop.Title</td>
+                <td>@workshop.Date.ToShortDateString()</td>
+                <td>@(workshop.Capacity - workshop.Participants.Count)</td>
+                <td>
+                    <a id="book" href="@Url.Action("WorkshopEnrollmentForm", "Booking", new { workshopId = workshop.WorkshopID })" class="btn btn-primary">Book</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="@Url.Action("BookedWorkshops", "Workshop")" id="bookedworkshops">View Booked Workshops</a>

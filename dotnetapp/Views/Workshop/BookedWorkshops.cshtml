@@ -1,0 +1,24 @@
+@model IEnumerable<dotnetapp.Models.Workshop>
+
+<h2>Booked Workshops</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Participants</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var workshop in Model)
+        {
+            <tr>
+                <td>@workshop.Title</td>
+                <td>@workshop.Date.ToShortDateString()</td>
+                <td>@workshop.Participants.Count</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Workshop" asp-action="AvailableWorkshops" class="btn btn-primary">back to available WorkShops</a>

@@ -1,0 +1,11 @@
+@model dotnetapp.Models.Participant
+
+<h2>Enrollment Confirmation</h2>
+<p>Thank you, @Model.Name, for enrolling in the workshop.</p>
+<p>Workshop Details:</p>
+<ul>
+    <li>Title: @Model.Workshop.Title</li>
+    <li>Date: @Model.Workshop.Date.ToShortDateString()</li>
+</ul>
+
+<a asp-controller="Workshop" asp-action="AvailableWorkshops" class="btn btn-primary">back to available WorkShops</a>
